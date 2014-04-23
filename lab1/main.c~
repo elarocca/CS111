@@ -4,7 +4,10 @@
 #include <error.h>
 #include <getopt.h>
 #include <stdio.h>
-#include "parallel.h"
+#include "parallel.c"
+
+
+#include "command.h"
 
 static char const *program_name;
 static char const *script_name;
@@ -24,42 +27,11 @@ get_next_byte (void *stream)
 int
 main (int argc, char **argv)
 {
-//Queue of command pointers
-  command_t cmd = malloc(sizeof(struct command));
-  cmd->status = 1; 
-  
-  Queue * firstQueue = initQueue(cmd);
-  command_t cmd_ptr = peak(&firstQueue);
-  printf("%i\n",cmd_ptr->status);  
-  
-  if(firstQueue != NULL)
-    printf("correct behavior\n");
- dequeue(&firstQueue);
-  if(firstQueue == NULL)
-    printf("correct behavior\n");
+  //Queue test code;
+  //Queue *firstQueue = initQueue("wtf");
+  //printf("%s",(firstQueue->data));
 
-// Queue of strings
-	enqueue("test",&firstQueue);
-	char* word = dequeue(&firstQueue);
-	printf("%s\n",word);
-   if(firstQueue == NULL)
-    printf("correct behavior\n");
-	
-// test process command
-	cmd->input[0] = "a";
-	cmd->output[0] = "b";
-	cmd->u.word[0] = "0";
-	Queue readList;
-	Queue writeList;
-	processCommand(cmd,&readList,&writeList);
-	while(firstQueue != NULL)
-	{
-		printf("%i\n",dequeue(&readList);  
-	}
-	
-	
-//--------------------------------------------	
-	
+
   int command_number = 1;
   bool print_tree = false;
   bool time_travel = false;
