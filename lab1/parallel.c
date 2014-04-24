@@ -11,12 +11,14 @@ DependencyGraph * createGraph(command_stream_t c){
 	Queue cmd_queue;
 	//Create readLists and writeLists for each command tree
 	int i;
-	while(c->cmds[i] != NULL)
+	command_t last_command = NULL;
+  	command_t command;
+	while(command = read_command_stream (c))
 	{
 		Queue tmp_readList;
 		Queue tmp_writeList;
 		listNode tmp_listNode;
-		processCommand(c->cmds[i], &tmp_readList, &tmp_writeList);
+		processCommand(command, &tmp_readList, &tmp_writeList);
 		i++;
 	}
 	//Insert listNode for for each command tree into the head of a Queue

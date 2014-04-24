@@ -17,6 +17,8 @@ Queue* initQueue(void* data){
  
 void* dequeue(Queue **head)
 {
+	if(*head == NULL || head == NULL)
+		return NULL;
 	void** tmpData = (*head)->data;
 	Queue* tmpHead = (*head);
 	(*head) = (*head)->next;
@@ -48,7 +50,11 @@ void enqueue(void* data, Queue **head)
 
 void* peak(Queue **head)
 {
+	if(*head == NULL || head == NULL)
+		return NULL;
 	return (*head)->data;
 }
+
+
 
 

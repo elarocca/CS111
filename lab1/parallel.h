@@ -17,11 +17,11 @@ typedef struct {
 
 typedef struct {
 	GraphNode* node;	
-	Queue * readList;
-	Queue * writeList;
+	Queue * readQueue;
+	Queue * writeQueue;
 } listNode;    
 
 void processCommand(command_t cmd, Queue *readList, Queue *writeList);
 
-DependencyGraph createGraph(command_stream_t c);
+DependencyGraph* createGraph(command_stream_t c);
 
